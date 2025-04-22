@@ -13,17 +13,16 @@ import java.util.Date;
 public class JwtUtil {
 
 
-    private final String secretKey = "sua-chave-secreta-super-segura-que-deve-ser-bem-longa";
-
+    private final String secretKey = "your-security-key-super-segura-it-should-be-quite-long";
 
 
     public String generateToken(String username) {
         return Jwts.builder()
-                .setSubject(username) // Define o nome de usuário como o assunto do token
-                .setIssuedAt(new Date()) // Define a data e hora de emissão do token
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60)) // Define a data e hora de expiração (1 hora a partir da emissão)
-                .signWith(Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8)), SignatureAlgorithm.HS256) // Converte a chave secreta em bytes e assina o token com ela
-                .compact(); // Constrói o token JWT
+                .setSubject(username)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60))
+                .signWith(Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8)), SignatureAlgorithm.HS256)
+                .compact();
     }
 
 
