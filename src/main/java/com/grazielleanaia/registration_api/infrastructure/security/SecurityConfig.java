@@ -36,10 +36,10 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/usuario/login").permitAll()
+                        .requestMatchers("/customer/login").permitAll()
                         .requestMatchers(HttpMethod.GET, "/auth").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/usuario").permitAll()
-                        .requestMatchers("/usuario/**").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/customer").permitAll()
+                        .requestMatchers("/customer/**").authenticated()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session
