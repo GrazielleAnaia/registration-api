@@ -1,7 +1,7 @@
 package com.grazielleanaia.registration_api.infrastructure.security;
 
-import com.grazielleanaia.user_registration.infrastructure.entity.Customer;
-import com.grazielleanaia.user_registration.infrastructure.repository.CustomerRepository;
+import com.grazielleanaia.registration_api.infrastructure.entity.Customer;
+import com.grazielleanaia.registration_api.infrastructure.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,7 +18,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Customer customer = customerRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("Customer not found: " + email));
-
         return org.springframework.security.core.userdetails.User
                 .withUsername(customer.getEmail())
                 .password(customer.getPassword())
