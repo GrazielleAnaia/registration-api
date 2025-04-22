@@ -31,4 +31,7 @@ public class Residence {
 
     @Column(name = "zipcode")
     private Long zipCode;
+
+    @Column(name = "customer_id")
+    private Long customer_id;
 }
