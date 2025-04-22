@@ -9,7 +9,6 @@ import lombok.*;
 @Builder
 
 public class ResidenceDTO {
-    private Long id;
 
     private String street;
 
