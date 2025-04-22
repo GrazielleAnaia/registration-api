@@ -19,4 +19,6 @@ public class ResidenceDTO {
     private String state;
 
     private Long zipCode;
+
+    private Long customer_id;
 }
