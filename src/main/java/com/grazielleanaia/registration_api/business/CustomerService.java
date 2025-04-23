@@ -51,10 +51,10 @@ public class CustomerService {
     }
 
     public void deleteCustomer(String email) {
-        try{
+        try {
             customerRepository.deleteByEmail(email);
         } catch (ResourceNotFoundException e) {
-            throw  new ResourceNotFoundException("Email not found", e.getCause());
+            throw new ResourceNotFoundException("Email not found", e.getCause());
         }
     }
 
@@ -75,14 +75,15 @@ public class CustomerService {
 
     public CustomerDTO updateCustomer(CustomerDTO customerDTO, String token) {
         String email = jwtUtil.extractUsername(token.substring(7));
-        Customer customer = customerRepository.findByEmail(email).orElseThrow(()->
+        Customer customer = customerRepository.findByEmail(email).orElseThrow(() ->
                 new ResourceNotFoundException("Email not found"));
+        customerDTO.setPassword(customerDTO.getPassword() != null ? passwordEncoder.encode(customerDTO.getPassword()) : null);
         Customer customer1 = customerConverter.updateCustomer(customerDTO, customer);
         return customerConverter.convertToCustomerDTO(customerRepository.save(customer1));
     }
 
     public ResidenceDTO updateResidence(ResidenceDTO residenceDTO, Long id) {
-        Residence residence = residenceRepository.findById(id).orElseThrow(()->
+        Residence residence = residenceRepository.findById(id).orElseThrow(() ->
                 new ResourceNotFoundException("Id not found" + id));
         Residence residence1 = customerConverter.updateResidence(residenceDTO, residence);
         return customerConverter.convertToResidenceDTO(residenceRepository.save(residence1));

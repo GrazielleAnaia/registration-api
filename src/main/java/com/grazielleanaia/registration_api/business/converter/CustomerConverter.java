@@ -119,21 +119,21 @@ public class CustomerConverter {
 
     //Converter for Add methods
 
-    public Residence addResidence(ResidenceDTO residenceDTO, Long customer_id) {
+    public Residence addResidence(ResidenceDTO residenceDTO, Long customerID) {
         return Residence.builder()
                 .street(residenceDTO.getStreet())
                 .complement(residenceDTO.getComplement())
                 .city(residenceDTO.getCity())
                 .state(residenceDTO.getState())
                 .zipCode(residenceDTO.getZipCode())
-                .id(customer_id)
+                .customer_id(customerID)
                 .build();
     }
 
-    public Phone addPhone(PhoneDTO phoneDTO, Long customer_id) {
+    public Phone addPhone(PhoneDTO phoneDTO, Long customerID) {
         return Phone.builder()
                 .number(phoneDTO.getNumber())
-                .id(customer_id)
+                .customer_id(customerID)
                 .build();
     }
 }
