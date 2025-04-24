@@ -73,6 +73,7 @@ public class CustomerConverter {
                 .city(residence.getCity())
                 .state(residence.getState())
                 .zipCode(residence.getZipCode())
+                .customer_id(residence.getId())
                 .build();
     }
 
@@ -83,6 +84,7 @@ public class CustomerConverter {
     public PhoneDTO convertToPhoneDTO(Phone phone) {
         return PhoneDTO.builder()
                 .number(phone.getNumber())
+                .customer_id(phone.getId())
                 .build();
     }
 
