@@ -1,7 +1,6 @@
 package com.grazielleanaia.registration_api.business.converter;
 
 
-
 import com.grazielleanaia.registration_api.business.dto.CustomerDTO;
 import com.grazielleanaia.registration_api.business.dto.PhoneDTO;
 import com.grazielleanaia.registration_api.business.dto.ResidenceDTO;
@@ -86,6 +85,59 @@ public class CustomerConverter {
         return PhoneDTO.builder()
                 .number(phone.getNumber())
                 .id(phone.getId())
+                .build();
+    }
+
+    //Converter for update methods
+
+    public Customer updateCustomer(CustomerDTO customerDTO, Customer customer) {
+        return Customer.builder()
+                .name(customerDTO.getName() != null ? customerDTO.getName() : customer.getName())
+                .email(customerDTO.getEmail() != null ? customerDTO.getEmail() : customer.getEmail())
+                .password(customerDTO.getPassword() != null ? customerDTO.getPassword() : customer.getPassword())
+                .id(customer.getId())
+                .residenceList(customer.getResidenceList())
+                .phoneList(customer.getPhoneList())
+                .build();
+    }
+
+    public Residence updateResidence(ResidenceDTO residenceDTO, Residence residence) {
+        return Residence.builder()
+                .street(residenceDTO.getStreet() != null ? residenceDTO.getStreet() : residence.getStreet())
+                .complement(residenceDTO.getComplement() != null ? residenceDTO.getComplement() : residence.getComplement())
+                .city(residenceDTO.getCity() != null ? residenceDTO.getCity() : residence.getCity())
+                .state(residenceDTO.getState() != null ? residenceDTO.getState() : residence.getState())
+                .zipCode(residenceDTO.getZipCode() != null ? residenceDTO.getZipCode() : residence.getZipCode())
+                .id(residence.getId())
+                .build();
+    }
+
+    public Phone updatePhone(PhoneDTO phoneDTO, Phone phone) {
+        return Phone.builder()
+                .number(phoneDTO.getNumber() != null ? phoneDTO.getNumber() : phone.getNumber())
+                .id(phone.getId())
+                .build();
+    }
+
+    //Converter for Add methods
+
+    public Residence addResidence(ResidenceDTO residenceDTO, Long customerID) {
+        return Residence.builder()
+                .street(residenceDTO.getStreet())
+                .complement(residenceDTO.getComplement())
+                .city(residenceDTO.getCity())
+                .state(residenceDTO.getState())
+                .zipCode(residenceDTO.getZipCode())
+                .customer_id(customerID)
+              //  .id(customerID)
+                .build();
+    }
+
+    public Phone addPhone(PhoneDTO phoneDTO, Long customerID) {
+        return Phone.builder()
+                .number(phoneDTO.getNumber())
+                .customer_id(customerID)
+              //  .id(customerID)
                 .build();
     }
 }

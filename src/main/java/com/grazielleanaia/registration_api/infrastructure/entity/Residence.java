@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "phone")
+@Table(name = "residence")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -31,4 +31,7 @@ public class Residence {
 
     @Column(name = "zipcode")
     private Long zipCode;
+
+    @Column(name = "customer_id")
+    private Long customer_id;
 }

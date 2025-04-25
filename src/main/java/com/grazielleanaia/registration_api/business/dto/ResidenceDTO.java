@@ -9,7 +9,6 @@ import lombok.*;
 @Builder
 
 public class ResidenceDTO {
-    private Long id;
 
     private String street;
 
@@ -20,4 +19,6 @@ public class ResidenceDTO {
     private String state;
 
     private Long zipCode;
+
+    private Long id;
 }

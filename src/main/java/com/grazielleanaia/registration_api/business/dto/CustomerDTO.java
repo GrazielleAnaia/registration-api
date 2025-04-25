@@ -11,7 +11,7 @@ import java.util.List;
 @Builder
 
 public class CustomerDTO {
-    private Long id;
+
 
     private String name;
 
