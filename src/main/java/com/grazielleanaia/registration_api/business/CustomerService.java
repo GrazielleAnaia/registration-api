@@ -46,7 +46,7 @@ public class CustomerService {
 
     public CustomerDTO getCustomerByEmail(String email) {
         Customer customer = customerRepository.findByEmail(email).orElseThrow(() ->
-                new ResourceNotFoundException("Email not found"));
+                new ResourceNotFoundException("Email not found" + email));
         return customerConverter.convertToCustomerDTO(customer);
     }
 
@@ -85,7 +85,7 @@ public class CustomerService {
     public ResidenceDTO updateResidence(ResidenceDTO residenceDTO, Long id) {
         Residence residence = residenceRepository.findById(id).orElseThrow(() ->
                 new ResourceNotFoundException("Id not found" + id));
-        residenceDTO.setCustomer_id(id);
+
         Residence residence1 = customerConverter.updateResidence(residenceDTO, residence);
         return customerConverter.convertToResidenceDTO(residenceRepository.save(residence1));
     }
@@ -93,7 +93,6 @@ public class CustomerService {
     public PhoneDTO updatePhone(PhoneDTO phoneDTO, Long id) {
         Phone phone = phoneRepository.findById(id).orElseThrow(() ->
                 new ResourceNotFoundException("Id not found" + id));
-        phoneDTO.setCustomer_id(id);
         Phone phone1 = customerConverter.updatePhone(phoneDTO, phone);
         return customerConverter.convertToPhoneDTO(phoneRepository.save(phone1));
     }
@@ -107,7 +106,7 @@ public class CustomerService {
     }
 
     public PhoneDTO addPhone(PhoneDTO phoneDTO, String token) {
-        String email = jwtUtil.generateToken(token.substring(7));
+        String email = jwtUtil.extractUsername(token.substring(7));
         Customer customer = customerRepository.findByEmail(email).orElseThrow(() ->
                 new ResourceNotFoundException("Customer not found" + email));
         Phone phone = customerConverter.addPhone(phoneDTO, customer.getId());

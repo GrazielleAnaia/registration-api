@@ -12,5 +12,5 @@ public class PhoneDTO {
 
 
     private String number;
-    private Long customer_id;
+    private Long id;
 }
