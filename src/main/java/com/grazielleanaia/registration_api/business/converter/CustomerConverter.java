@@ -73,7 +73,7 @@ public class CustomerConverter {
                 .city(residence.getCity())
                 .state(residence.getState())
                 .zipCode(residence.getZipCode())
-                .customer_id(residence.getId())
+                .id(residence.getId())
                 .build();
     }
 
@@ -84,7 +84,7 @@ public class CustomerConverter {
     public PhoneDTO convertToPhoneDTO(Phone phone) {
         return PhoneDTO.builder()
                 .number(phone.getNumber())
-                .customer_id(phone.getId())
+                .id(phone.getId())
                 .build();
     }
 
@@ -129,6 +129,7 @@ public class CustomerConverter {
                 .state(residenceDTO.getState())
                 .zipCode(residenceDTO.getZipCode())
                 .customer_id(customerID)
+              //  .id(customerID)
                 .build();
     }
 
@@ -136,6 +137,7 @@ public class CustomerConverter {
         return Phone.builder()
                 .number(phoneDTO.getNumber())
                 .customer_id(customerID)
+              //  .id(customerID)
                 .build();
     }
 }

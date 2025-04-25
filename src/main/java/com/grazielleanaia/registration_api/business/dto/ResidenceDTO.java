@@ -20,5 +20,5 @@ public class ResidenceDTO {
 
     private Long zipCode;
 
-    private Long customer_id;
+    private Long id;
 }
