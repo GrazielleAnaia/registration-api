@@ -129,7 +129,6 @@ public class CustomerConverter {
                 .state(residenceDTO.getState())
                 .zipCode(residenceDTO.getZipCode())
                 .customer_id(customerID)
-              //  .id(customerID)
                 .build();
     }
 
@@ -137,7 +136,6 @@ public class CustomerConverter {
         return Phone.builder()
                 .number(phoneDTO.getNumber())
                 .customer_id(customerID)
-              //  .id(customerID)
                 .build();
     }
 }
