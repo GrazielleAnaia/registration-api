@@ -5,6 +5,7 @@ import com.grazielleanaia.registration_api.business.converter.CustomerConverter;
 import com.grazielleanaia.registration_api.business.dto.CustomerDTO;
 import com.grazielleanaia.registration_api.business.dto.PhoneDTO;
 import com.grazielleanaia.registration_api.business.dto.ResidenceDTO;
+import com.grazielleanaia.registration_api.business.mapper.CustomerMapperConverter;
 import com.grazielleanaia.registration_api.infrastructure.entity.Customer;
 import com.grazielleanaia.registration_api.infrastructure.entity.Phone;
 import com.grazielleanaia.registration_api.infrastructure.entity.Residence;
@@ -31,6 +32,7 @@ public class CustomerService {
     private final JwtUtil jwtUtil;
     private final ResidenceRepository residenceRepository;
     private final PhoneRepository phoneRepository;
+    private final CustomerMapperConverter customerMapperConverter;
 
 
     public CustomerDTO createCustomer(CustomerDTO customerDTO) {
@@ -40,8 +42,10 @@ public class CustomerService {
         return customerConverter.convertToCustomerDTO(customerRepository.save(customer));
     }
 
-    public List<Customer> getAllCustomers() {
-        return customerRepository.findAll();
+    public List<CustomerDTO> getAllCustomers() {
+        List<Customer> customer = customerRepository.findAll();
+        return customerMapperConverter.toCustomerDTOList(customer);
+
     }
 
     public CustomerDTO getCustomerByEmail(String email) {

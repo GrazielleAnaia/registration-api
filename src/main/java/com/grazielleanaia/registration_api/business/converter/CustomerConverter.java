@@ -25,6 +25,10 @@ public class CustomerConverter {
                 .build();
     }
 
+//    public List<CustomerDTO> convertToListCustomerDTO(List<Customer> customerList){
+//        return customerList.stream().map(customerList).toList()
+//    }
+
     public List<Phone> convertToPhoneList(List<PhoneDTO> phoneDTOList) {
         return phoneDTOList.stream()
                 .map(this::convertToPhone).toList();
@@ -129,7 +133,6 @@ public class CustomerConverter {
                 .state(residenceDTO.getState())
                 .zipCode(residenceDTO.getZipCode())
                 .customer_id(customerID)
-              //  .id(customerID)
                 .build();
     }
 
@@ -137,7 +140,6 @@ public class CustomerConverter {
         return Phone.builder()
                 .number(phoneDTO.getNumber())
                 .customer_id(customerID)
-              //  .id(customerID)
                 .build();
     }
 }
