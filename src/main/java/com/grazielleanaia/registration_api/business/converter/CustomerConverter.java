@@ -25,6 +25,10 @@ public class CustomerConverter {
                 .build();
     }
 
+//    public List<CustomerDTO> convertToListCustomerDTO(List<Customer> customerList){
+//        return customerList.stream().map(customerList).toList()
+//    }
+
     public List<Phone> convertToPhoneList(List<PhoneDTO> phoneDTOList) {
         return phoneDTOList.stream()
                 .map(this::convertToPhone).toList();
