@@ -5,7 +5,6 @@ import com.grazielleanaia.registration_api.business.CustomerService;
 import com.grazielleanaia.registration_api.business.dto.CustomerDTO;
 import com.grazielleanaia.registration_api.business.dto.PhoneDTO;
 import com.grazielleanaia.registration_api.business.dto.ResidenceDTO;
-import com.grazielleanaia.registration_api.infrastructure.entity.Customer;
 import com.grazielleanaia.registration_api.infrastructure.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

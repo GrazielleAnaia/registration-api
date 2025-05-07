@@ -20,14 +20,11 @@ public class CustomerConverter {
                 .name(customerDTO.getName())
                 .email(customerDTO.getEmail())
                 .password(customerDTO.getPassword())
-                .phoneList(convertToPhoneList(customerDTO.getPhoneList()))
-                .residenceList(convertToResidenceList(customerDTO.getResidenceList()))
+                .phoneList(customerDTO.getPhoneList() != null ? convertToPhoneList(customerDTO.getPhoneList()) : null)
+                .residenceList(customerDTO.getResidenceList() != null ? convertToResidenceList(customerDTO.getResidenceList()) : null)
                 .build();
     }
 
-//    public List<CustomerDTO> convertToListCustomerDTO(List<Customer> customerList){
-//        return customerList.stream().map(customerList).toList()
-//    }
 
     public List<Phone> convertToPhoneList(List<PhoneDTO> phoneDTOList) {
         return phoneDTOList.stream()
@@ -61,8 +58,8 @@ public class CustomerConverter {
                 .name(customer.getName())
                 .email(customer.getEmail())
                 .password(customer.getPassword())
-                .residenceList(convertToListResidenceDTO(customer.getResidenceList()))
-                .phoneList(convertToListPhoneDTO(customer.getPhoneList()))
+                .residenceList(customer.getResidenceList() != null ? convertToListResidenceDTO(customer.getResidenceList()) : null)
+                .phoneList(customer.getPhoneList() != null ? convertToListPhoneDTO(customer.getPhoneList()) : null)
                 .build();
     }
 
