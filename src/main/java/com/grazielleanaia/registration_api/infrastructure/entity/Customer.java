@@ -32,11 +32,11 @@ public class Customer implements UserDetails {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
-    private List<Phone> phoneList;
+    private transient List<Phone> phoneList;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
-    private List<Residence> residenceList;
+    private transient List<Residence> residenceList;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

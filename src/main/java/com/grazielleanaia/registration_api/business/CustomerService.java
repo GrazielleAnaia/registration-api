@@ -26,6 +26,8 @@ import java.util.List;
 
 public class CustomerService {
 
+    private static final String EMAIL_NOT_FOUND = "Email not found: ";
+
     private final CustomerRepository customerRepository;
     private final CustomerConverter customerConverter;
     private final PasswordEncoder passwordEncoder;
@@ -50,7 +52,7 @@ public class CustomerService {
 
     public CustomerDTO getCustomerByEmail(String email) {
         Customer customer = customerRepository.findByEmail(email).orElseThrow(() ->
-                new ResourceNotFoundException("Email not found" + email));
+                new ResourceNotFoundException(EMAIL_NOT_FOUND + email));
         return customerConverter.convertToCustomerDTO(customer);
     }
 
@@ -58,7 +60,7 @@ public class CustomerService {
         try {
             customerRepository.deleteByEmail(email);
         } catch (ResourceNotFoundException e) {
-            throw new ResourceNotFoundException("Email not found", e.getCause());
+            throw new ResourceNotFoundException(EMAIL_NOT_FOUND, e.getCause());
         }
     }
 
